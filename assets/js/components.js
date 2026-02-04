@@ -18,13 +18,24 @@
 
 /* ============================================
    NAVIGATION COMPONENT
+   Sticky header with logo and main nav links
+   Includes mobile hamburger menu
    ============================================ */
 
 const Navigation = () => `
   <nav class="site-nav">
     <div class="nav-container">
-      <a href="/index.html" class="nav-brand">Professional Accompaniment</a>
+      <!-- Brand/Logo - links to homepage -->
+      <a href="index.html" class="nav-brand">Professional Accompaniment</a>
       
+      <!-- Hamburger button (mobile only) -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <!-- Main navigation links -->
       <div class="nav-links">
         <a href="/index.html">Home</a>
         <a href="/how-it-works.html">How It Works</a>
@@ -36,15 +47,19 @@ const Navigation = () => `
   </nav>
 `;
 
+
 /* ============================================
    FOOTER COMPONENT
+   Site footer with copyright and policy links
    ============================================ */
 
 const Footer = () => `
   <footer class="site-footer">
     <div class="footer-container">
+      <!-- Copyright notice -->
       <p>&copy; 2025 Professional Accompaniment</p>
       
+      <!-- Footer navigation links -->
       <div class="footer-links">
         <a href="/contact.html">Contact</a>
         <a href="/policies/cancellation.html">Cancellation Policy</a>
@@ -55,6 +70,7 @@ const Footer = () => `
     </div>
   </footer>
 `;
+
 
 /* ============================================
    COMPONENT INJECTION
@@ -101,5 +117,49 @@ document.addEventListener('DOMContentLoaded', () => {
         link.style.fontWeight = 'var(--font-weight-medium)';
       }
     });
+  }, 10);
+});
+
+/* ============================================
+   MOBILE MENU TOGGLE
+   Hamburger menu functionality
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle aria-expanded
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        
+        // Toggle active classes
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking a link
+      const links = navLinks.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   }, 10);
 });
