@@ -26,7 +26,7 @@ const Navigation = () => `
   <nav class="site-nav">
     <div class="nav-container">
       <!-- Brand/Logo - links to homepage -->
-      <a href="index.html" class="nav-brand">Professional Accompaniment</a>
+      <a href="/index.html" class="nav-brand">Professional Accompaniment</a>
       
       <!-- Hamburger button (mobile only) -->
       <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
