@@ -26,11 +26,11 @@ const Navigation = () => `
       <a href="/index.html" class="nav-brand">Professional Accompaniment</a>
       
       <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/how-it-works.html">How It Works</a>
-        <a href="/services.html">Services & Pricing</a>
-        <a href="/about.html">About</a>
-        <a href="/faq.html">FAQ</a>
+        <a href="/Accompaniment/index.html">Home</a>
+        <a href="/Accompaniment/how-it-works.html">How It Works</a>
+        <a href="/Accompaniment/services.html">Services & Pricing</a>
+        <a href="/Accompaniment/about.html">About</a>
+        <a href="/Accompaniment/faq.html">FAQ</a>
       </div>
     </div>
   </nav>
@@ -46,11 +46,11 @@ const Footer = () => `
       <p>&copy; 2025 Professional Accompaniment</p>
       
       <div class="footer-links">
-        <a href="/contact.html">Contact</a>
-        <a href="/policies/cancellation.html">Cancellation Policy</a>
-        <a href="/policies/privacy.html">Privacy</a>
-        <a href="/policies/scope.html">Scope & Boundaries</a>
-        <a href="/policies/terms.html">Terms of Service</a>
+        <a href="/Accompaniment/contact.html">Contact</a>
+        <a href="/Accompaniment/policies/cancellation.html">Cancellation Policy</a>
+        <a href="/Accompaniment/policies/privacy.html">Privacy</a>
+        <a href="/Accompaniment/policies/scope.html">Scope & Boundaries</a>
+        <a href="/Accompaniment/policies/terms.html">Terms of Service</a>
       </div>
     </div>
   </footer>
