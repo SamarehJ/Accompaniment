@@ -18,51 +18,43 @@
 
 /* ============================================
    NAVIGATION COMPONENT
-   Sticky header with logo and main nav links
    ============================================ */
 
 const Navigation = () => `
   <nav class="site-nav">
     <div class="nav-container">
-      <!-- Brand/Logo - links to homepage -->
-      <a href="index.html" class="nav-brand">Professional Accompaniment</a>
+      <a href="/index.html" class="nav-brand">Professional Accompaniment</a>
       
-      <!-- Main navigation links -->
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="services.html">Services & Pricing</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
+        <a href="/index.html">Home</a>
+        <a href="/how-it-works.html">How It Works</a>
+        <a href="/services.html">Services & Pricing</a>
+        <a href="/about.html">About</a>
+        <a href="/faq.html">FAQ</a>
       </div>
     </div>
   </nav>
 `;
 
-
 /* ============================================
    FOOTER COMPONENT
-   Site footer with copyright and policy links
    ============================================ */
 
 const Footer = () => `
   <footer class="site-footer">
     <div class="footer-container">
-      <!-- Copyright notice -->
       <p>&copy; 2025 Professional Accompaniment</p>
       
-      <!-- Footer navigation links -->
       <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="policies/cancellation.html">Cancellation Policy</a>
-        <a href="policies/privacy.html">Privacy</a>
-        <a href="policies/scope.html">Scope & Boundaries</a>
-        <a href="policies/terms.html">Terms of Service</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/policies/cancellation.html">Cancellation Policy</a>
+        <a href="/policies/privacy.html">Privacy</a>
+        <a href="/policies/scope.html">Scope & Boundaries</a>
+        <a href="/policies/terms.html">Terms of Service</a>
       </div>
     </div>
   </footer>
 `;
-
 
 /* ============================================
    COMPONENT INJECTION
