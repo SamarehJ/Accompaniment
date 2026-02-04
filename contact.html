@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Page Title -->
+  <title>Contact - Professional Accompaniment</title>
+  
+  <!-- SEO Meta Description -->
+  <meta name="description" content="Contact Professional Accompaniment. Reach out with questions or to discuss working together. Response within 24-48 hours.">
+  
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Contact - Professional Accompaniment">
+  <meta property="og:description" content="Reach out with questions or to discuss working together. Response within 24-48 hours.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+  
+  <!-- Navigation (injected via components.js) -->
+  <div id="nav-placeholder"></div>
+  
+  
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main>
+    
+    <!-- ==========================================
+         HERO / PAGE TITLE
+         ========================================== -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="fade-in">Contact</h1>
+        <p class="hero-text fade-in-delay-1">Reach out with questions, to discuss working together, or if you need clarification on anything.</p>
+        <p class="fade-in-delay-2">I'll respond within 24-48 hours.</p>
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         CONTACT OPTIONS
+         ========================================== -->
+    <section class="animate-on-scroll">
+      <div class="container text-center">
+        
+        <!-- OPTION 1: DIRECT CONTACT INFO -->
+        <!-- Uncomment and fill in if providing direct email/phone -->
+        <!--
+        <div class="info-card" style="max-width: 500px; margin: 0 auto;">
+          <h2>Get in Touch</h2>
+          <p><strong>Email:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+          <p class="text-small" style="margin-top: var(--space-md);">Email is preferred for initial contact. I respond within 24-48 hours during business days.</p>
+        </div>
+        -->
+        
+        
+        <!-- OPTION 2: CONTACT FORM -->
+        <!-- Simple HTML form using mailto or Formspree -->
+        <!-- Replace with actual form service if desired -->
+        
+        <div class="info-card" style="max-width: 600px; margin: 0 auto;">
+          <h2>Send a Message</h2>
+          
+          <!-- SIMPLE MAILTO FORM (no backend required) -->
+          <!-- Browser will open default email client -->
+          <!--<form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            
+            
+          </form>
+          
+          <!-- ALTERNATIVE: FORMSPREE INTEGRATION -->
+          <!-- Replace mailto form with Formspree for better functionality -->
+          <!-- Sign up at formspree.io and replace YOUR_FORM_ID -->
+
+          <form action="https://formspree.io/f/mnjzeodj" method="POST">
+            <div style="margin-bottom: var(--space-md); text-align: left;">
+              <label for="name" style="display: block; margin-bottom: var(--space-xs); font-weight: var(--font-weight-medium);">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                style="width: 100%; padding: var(--space-sm); border: var(--border-width) solid var(--color-border); border-radius: var(--border-radius); font-family: var(--font-body); font-size: var(--font-size-base);"
+              >
+            </div>
+            
+            <div style="margin-bottom: var(--space-md); text-align: left;">
+              <label for="email" style="display: block; margin-bottom: var(--space-xs); font-weight: var(--font-weight-medium);">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                style="width: 100%; padding: var(--space-sm); border: var(--border-width) solid var(--color-border); border-radius: var(--border-radius); font-family: var(--font-body); font-size: var(--font-size-base);"
+              >
+            </div>
+            
+            <div style="margin-bottom: var(--space-md); text-align: left;">
+              <label for="message" style="display: block; margin-bottom: var(--space-xs); font-weight: var(--font-weight-medium);">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                required
+                style="width: 100%; padding: var(--space-sm); border: var(--border-width) solid var(--color-border); border-radius: var(--border-radius); font-family: var(--font-body); font-size: var(--font-size-base); resize: vertical;"
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="button-primary">Send Message</button>
+            
+            <input type="hidden" name="_subject" value="New contact from Professional Accompaniment website">
+            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+          </form>
+          
+          <p class="text-small" style="margin-top: var(--space-md); color: var(--color-secondary);">I respond to all messages within 24-48 hours during business days.</p>
+        </div>
+        
+      </div>
+    </section>
+    
+    
+    <!-- ==========================================
+         READY TO SCHEDULE
+         ========================================== -->
+    <section class="animate-on-scroll">
+      <div class="container text-center">
+        <h2>Ready to Schedule?</h2>
+        <p class="text-large">If you're ready to book a Fit Check or One-Time Session, you can schedule directly.</p>
+        <a href="services.html#booking" class="button-primary">Go to Booking →</a>
+      </div>
+    </section>
+    
+  </main>
+  
+  
+  <!-- Mobile Sticky CTA -->
+  <div class="mobile-cta" id="mobile-cta">
+    <a href="services.html#booking" class="button-primary">Schedule a Session</a>
+    <button class="mobile-cta-dismiss" aria-label="Dismiss">×</button>
+  </div>
+  
+  
+  <!-- Footer (injected via components.js) -->
+  <div id="footer-placeholder"></div>
+  
+  
+  <!-- JavaScript -->
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/main.js"></script>
+  
+</body>
+</html>
