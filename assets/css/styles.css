@@ -1,7 +1,7 @@
 /* ============================================
    PROFESSIONAL ACCOMPANIMENT - MAIN STYLESHEET
    ============================================
-   
+    
    This file contains all CSS for the website.
    Design tokens at the top make it easy to update
    colors, fonts, spacing across the entire site.
@@ -123,7 +123,7 @@ body {
   /* Background color */
   background-color: var(--color-bg);
   
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix values='0.02 0 0 0 0, 0 0.015 0 0 0, 0 0 0.01 0 0, 0 0 0 0.02 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix values='0.02 0 0 0 0, 0 0.015 0 0 0, 0 0 0.01 0 0, 0 0 0 0.02 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");*/
   
   
   /* Better font rendering */
@@ -307,7 +307,6 @@ section:first-of-type {
 .divider-holder{
  width: 100%;
  margin: 0;
- padding: var(--space-md);
 }
 
 .section-divider {
@@ -613,9 +612,11 @@ section:first-of-type {
 
 .bg-white {
   background-color: var(--color-white);
-  border-top: var(--border-width) solid var(--color-border);
-  border-bottom: var(--border-width) solid var(--color-border);
 }
+
+/* removed 
+  border-top: var(--border-width) solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border); */
 
 /* Text centering utility */
 .section-centered {
@@ -713,7 +714,7 @@ section:first-of-type {
 .states-labels {
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   font-size: var(--font-size-small);
   color: var(--color-secondary);
