@@ -1106,6 +1106,19 @@ section:first-of-type {
     background-color: rgba(177, 90, 66, 0.05);
   }
   
+  .cal-embed {
+    padding: var(--space-xs);
+  }
+  
+  .profile-photo {
+    float: none;
+    width: 260px;
+    max-width: 100%;
+    margin: 0 auto var(--space-md) auto;
+    display: block;
+  }
+}
+  
 }
 
 
@@ -1157,4 +1170,32 @@ section:first-of-type {
   .mobile-only {
     display: none;
   }
+}
+
+.profile-layout {
+  overflow: hidden; /* Clearfix for float */
+}
+
+.profile-photo {
+  float: left;
+  width: 200px;
+  margin-right: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-medium);
+}
+
+.about-me-copy p {
+  margin-bottom: 1.5em;
+}
+
+.about-me-copy p:last-child {
+  margin-bottom: 0;
 }
