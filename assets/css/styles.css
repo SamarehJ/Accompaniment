@@ -657,6 +657,69 @@ section:first-of-type {
   margin-bottom: var(--space-md);
 }
 
+/* ===== TESTIMONIALS SECTION ===== */
+
+.testimonials-stage{
+  padding: var(--space-xl) 0;
+  background: var(--color-bg-alt);
+}
+
+.testimonial-intro{
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-rotator{
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+.testimonial{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms ease,
+    transform 900ms ease;
+}
+
+.testimonial.is-active{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial.is-exiting{
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+.testimonial::before{
+  content: "“";
+  position: absolute;
+  left: -10px;
+  top: -22px;
+  font-family: var(--font-heading);
+  font-size: 110px;
+  color: var(--color-border);
+  line-height: 1;
+  z-index: 0;
+}
+
+.testimonial p{
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-body);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 760px;
+}
+
 /* ===== HOW IT WORKS SECTION ===== */
 
 /* PAR Framework */
@@ -820,6 +883,21 @@ section:first-of-type {
   display: none; /* Hidden by default, shown on desktop */
 }
 
+/* ===== TESTIMONIALS ===== */
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-top: 1.5rem;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 /* ===== POLICY PAGES ===== */
 
 .policy-page {

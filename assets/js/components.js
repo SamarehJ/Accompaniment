@@ -37,8 +37,8 @@ const Navigation = () => `
       
       <!-- Main navigation links -->
       <div class="nav-links">
-        <a href="/index.html">Home</a>
         <a href="/how-it-works.html">How It Works</a>
+        <a href="/testimonials.html">Testimonials</a>
         <a href="/services.html">Services & Pricing</a>
         <a href="/about.html">About</a>
         <a href="/faq.html">FAQ</a>
@@ -163,3 +163,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 10);
 });
+
