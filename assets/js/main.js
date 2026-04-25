@@ -301,19 +301,19 @@ const initQuoteRotator = () => {
   const dotsEl = document.getElementById('qrDots');
   if (!stage || !dotsEl) return;
 
-const quotes = [
-  "There\u2019s a profound sense that my obstacle is, in fact, surmountable.",
-  "She came to our meeting with a generous handful of ideas for how to chip away at my larger-than-life challenge.",
-  "Simply a delight to be around — the person you want accompanying you during hard moments.",
-  "I like the way she — from day one — was my champion.",
-  "The daily reminder of \u2018I\u2019m here\u2019 helped me become a different person.",
-  "She made me feel so seen and understood.",
-  "The range of possible solutions she can come up with is simply larger than what I could manage on my own.",
-  "Total joy, totally would recommend, and genuinely life-changing.",
-  "She\u2019s present, focused, devoted to finding flow, willing to work with you as a whole person.",
-  "Anyone can give advice — it\u2019s unique to have someone willing to sit in the muck with you.",
-  "The profundity of her presence, compassion, cleverness, and creativity was genuinely life-changing.",
-];
+  const quotes = [
+    "There\u2019s a profound sense that my obstacle is, in fact, surmountable.",
+    "She came to our meeting with a generous handful of ideas for how to chip away at my larger-than-life challenge.",
+    "Simply a delight to be around — the person you want accompanying you during hard moments.",
+    "I like the way she — from day one — was my champion.",
+    "The daily reminder of \u2018I\u2019m here\u2019 helped me become a different person.",
+    "She made me feel so seen and understood.",
+    "The range of possible solutions she can come up with is simply larger than what I could manage on my own.",
+    "Total joy, totally would recommend, and genuinely life-changing.",
+    "She\u2019s present, focused, devoted to finding flow, willing to work with you as a whole person.",
+    "Anyone can give advice — it\u2019s unique to have someone willing to sit in the muck with you.",
+    "The profundity of her presence, compassion, cleverness, and creativity was genuinely life-changing.",
+  ];
 
   let cur = 0;
   let busy = false;
@@ -321,6 +321,7 @@ const quotes = [
   const dots = quotes.map((_, i) => {
     const d = document.createElement('div');
     d.className = 'qr-dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => goTo(i));
     dotsEl.appendChild(d);
     return d;
   });
@@ -340,15 +341,15 @@ const quotes = [
   first.style.opacity = '1';
   stage.appendChild(first);
 
-  function advance() {
-    if (busy) return;
+  function goTo(index) {
+    if (busy || index === cur) return;
     busy = true;
 
     const leaving = stage.querySelector('.qr-slide');
     leaving.classList.add('leaving');
 
     dots[cur].classList.remove('on');
-    cur = (cur + 1) % quotes.length;
+    cur = index;
     dots[cur].classList.add('on');
 
     setTimeout(() => {
@@ -365,7 +366,11 @@ const quotes = [
     }, 550);
   }
 
-  setInterval(advance, 7000);
+  function advance() {
+    goTo((cur + 1) % quotes.length);
+  }
+
+  setInterval(advance, 8000);
 };
 
 document.addEventListener('DOMContentLoaded', initQuoteRotator);

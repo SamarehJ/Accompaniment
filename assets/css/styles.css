@@ -755,6 +755,7 @@ section:first-of-type {
   justify-content: center;
   gap: 6px;
   margin-top: var(--space-md);
+  cursor: pointer;
 }
 
 .qr-dot {
