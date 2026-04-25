@@ -290,3 +290,82 @@ const isInViewport = (element) => {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 };
+
+/* ============================================
+   QUOTE ROTATOR
+   Homepage testimonial quote rotation
+   ============================================ */
+
+const initQuoteRotator = () => {
+  const stage = document.getElementById('quoteRotatorStage');
+  const dotsEl = document.getElementById('qrDots');
+  if (!stage || !dotsEl) return;
+
+const quotes = [
+  "There\u2019s a profound sense that my obstacle is, in fact, surmountable.",
+  "She came to our meeting with a generous handful of ideas for how to chip away at my larger-than-life challenge.",
+  "Simply a delight to be around — the person you want accompanying you during hard moments.",
+  "I like the way she — from day one — was my champion.",
+  "The daily reminder of \u2018I\u2019m here\u2019 helped me become a different person.",
+  "She made me feel so seen and understood.",
+  "The range of possible solutions she can come up with is simply larger than what I could manage on my own.",
+  "Total joy, totally would recommend, and genuinely life-changing.",
+  "She\u2019s present, focused, devoted to finding flow, willing to work with you as a whole person.",
+  "Anyone can give advice — it\u2019s unique to have someone willing to sit in the muck with you.",
+  "The profundity of her presence, compassion, cleverness, and creativity was genuinely life-changing.",
+];
+
+  let cur = 0;
+  let busy = false;
+
+  const dots = quotes.map((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'qr-dot' + (i === 0 ? ' on' : '');
+    dotsEl.appendChild(d);
+    return d;
+  });
+
+  function makeSlide(q) {
+    const slide = document.createElement('div');
+    slide.className = 'qr-slide';
+    slide.innerHTML = `
+      <span class="qr-mark qr-mark-left" aria-hidden="true">&#8220;</span>
+      <div class="qr-text"><p>${q}</p></div>
+      <span class="qr-mark qr-mark-right" aria-hidden="true">&#8221;</span>
+    `;
+    return slide;
+  }
+
+  const first = makeSlide(quotes[0]);
+  first.style.opacity = '1';
+  stage.appendChild(first);
+
+  function advance() {
+    if (busy) return;
+    busy = true;
+
+    const leaving = stage.querySelector('.qr-slide');
+    leaving.classList.add('leaving');
+
+    dots[cur].classList.remove('on');
+    cur = (cur + 1) % quotes.length;
+    dots[cur].classList.add('on');
+
+    setTimeout(() => {
+      leaving.remove();
+      const entering = makeSlide(quotes[cur]);
+      entering.classList.add('entering');
+      stage.appendChild(entering);
+
+      entering.addEventListener('animationend', () => {
+        entering.classList.remove('entering');
+        entering.style.opacity = '1';
+        busy = false;
+      }, { once: true });
+    }, 550);
+  }
+
+  setInterval(advance, 7000);
+};
+
+document.addEventListener('DOMContentLoaded', initQuoteRotator);
