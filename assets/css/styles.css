@@ -661,7 +661,7 @@ section:first-of-type {
 
 .quote-rotator-section {
   padding: var(--space-xl) 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .quote-rotator-outer {
@@ -681,7 +681,7 @@ section:first-of-type {
 }
 
 .quote-rotator-stage {
-  min-width: var(--content-width);
+  width: 100%;
   position: relative;
   min-height: 120px;
 }
