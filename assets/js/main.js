@@ -313,6 +313,13 @@ const initQuoteRotator = () => {
     "She\u2019s present, focused, devoted to finding flow, willing to work with you as a whole person.",
     "Anyone can give advice — it\u2019s unique to have someone willing to sit in the muck with you.",
     "The profundity of her presence, compassion, cleverness, and creativity was genuinely life-changing.",
+    "I would not be where I am right now without her help.",
+    "I finished my draft months ahead of schedule.",
+    "When you’re trapped in your own head, having someone intelligently look at your situation and help navigate it with you is crucial.",
+    "She built an individualized and tailored approach to specifically what’s going on in my head.",
+    "The process works.",
+    "Give it a shot. It may surprise you.",
+    "It has paid incredible dividends.",
   ];
 
   let cur = 0;

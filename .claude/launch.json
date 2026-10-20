@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-I", "-c", "import http.server,functools as f;http.server.ThreadingHTTPServer(('127.0.0.1',8765),f.partial(http.server.SimpleHTTPRequestHandler,directory='/Users/samareh/Documents/CLAUDE CODE/Accompaniment')).serve_forever()"],
+      "port": 8765
+    }
+  ]
+}
