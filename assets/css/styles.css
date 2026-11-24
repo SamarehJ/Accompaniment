@@ -411,6 +411,30 @@ section:first-of-type {
   box-shadow: var(--shadow-medium);
 }
 
+/* Clickable service cards (link to booking) */
+a.service-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.service-card-link:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+.service-card-cta {
+  display: inline-block;
+  margin-top: var(--space-xs, 0.5rem);
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+a.service-card-link:hover .service-card-cta {
+  text-decoration: underline;
+}
+
 .service-card h3,
 .info-card h3 {
   font-family: var(--font-heading);
@@ -892,13 +916,43 @@ section:first-of-type {
   background: var(--color-bg);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius-large);
-  padding: var(--space-lg);
+  /* Keep this small: Cal switches to its compact side-by-side layout only when
+     its frame is about 1000px wide. Narrower frames get a stacked layout with a
+     very tall time-slot list, which is what causes the scroll-in-a-scroll. */
+  padding: var(--space-xs);
   margin-top: var(--space-lg);
 }
 
+.cal-type-toggle {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.cal-type-btn {
+  font: inherit;
+  padding: var(--space-xs, 0.5rem) var(--space-md);
+  background: var(--color-white);
+  color: var(--color-text);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.cal-type-btn[aria-pressed="true"] {
+  background: var(--color-text);
+  color: var(--color-white);
+  border-color: var(--color-text);
+}
+
+#cal-embed-target {
+  width: 100%;
+}
 .cal-embed iframe {
   width: 100%;
-  height: 800px;
   border: none;
   border-radius: var(--border-radius);
 }

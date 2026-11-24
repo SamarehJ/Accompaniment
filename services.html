@@ -62,21 +62,21 @@
         <div class="service-cards">
           
           <!-- Fit Check -->
-          <div class="service-card" id="fit-check">
+          <a class="service-card service-card-link" id="fit-check" href="#booking" data-event="fit-check">
             <h3>Fit Check — $50</h3>
             <p>A short conversation to see if this work is right for you. You leave with a real insight or next step regardless.</p>
             <p>If we decide to work together, you'll also leave with a quote. I'll suggest what I think would be the smallest effective level of involvement for what you're working on — which means the quote reflects what would actually help, not more than that.</p>
-          </div>
+            <span class="service-card-cta">Book this →</span>
+          </a>
           
           <!-- One-Time Session -->
-          <div class="service-card" id="one-time-session">
+          <a class="service-card service-card-link" id="one-time-session" href="#booking" data-event="one-time">
             <h3>One-Time Session — $150</h3>
             <p>This is for people who want a single conversation: sense-making, planning, or working through a specific block.</p>
-          </div>
+            <span class="service-card-cta">Book this →</span>
+          </a>
           
         </div>
-        
-        <p class="text-center mt-lg"><a href="#booking" class="link-secondary">Jump to booking →</a></p>
       </div>
     </section>
     
@@ -171,32 +171,15 @@
         <!-- Replace YOUR-USERNAME with actual Cal.com username -->
         <div class="cal-embed">
           
-          <!-- SERVICE TYPE SELECTOR -->
-          <!-- This would typically be handled by Cal.com's multi-event selector -->
-          <!-- For now, showing structure with placeholder -->
-          
-          <!-- <div style="margin-bottom: var(--space-lg); text-align: center;">
-            <p style="color: var(--color-secondary); margin-bottom: var(--space-sm);">Select a session type:</p>
-            <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
-              <button class="button-outline" style="margin: 0;">Fit Check</button>
-              <button class="button-outline" style="margin: 0;">One-Time Session</button>
-            </div>
+          <!-- SERVICE TYPE SELECTOR (cards above also switch this) -->
+          <div class="cal-type-toggle" role="group" aria-label="Session type">
+            <button type="button" class="cal-type-btn" data-event="fit-check" aria-pressed="true">Fit Check</button>
+            <button type="button" class="cal-type-btn" data-event="one-time" aria-pressed="false">One-Time Session</button>
           </div>
           
-          <!-- CAL.COM IFRAME -->
-          <!-- Replace with your actual Cal.com embed URL -->
-          <iframe 
-            src="https://cal.com/samareh.jack?embed=true" 
-            width="100%" 
-            height="800" 
-            frameborder="0"
-            title="Schedule a session"
-            style="border: none; border-radius: var(--border-radius);"
-          ></iframe>
-          
-          <!-- ALTERNATIVE: If using Cal.com's service selector -->
-          <!-- The actual implementation will depend on your Cal.com setup -->
-          <!-- You may use their multi-event booking widget -->
+          <!-- CAL.COM INLINE EMBED (auto-sizes to its content) -->
+          <div id="cal-embed-target"></div>
+          <noscript><p><a href="https://cal.com/samareh.jack">Book on Cal.com</a></p></noscript>
           
         </div>
         
@@ -225,6 +208,60 @@
   <!-- JavaScript -->
   <script src="assets/js/components.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // Cal.com inline embed: auto-resizes to fit its content.
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://app.cal.com" });
+
+    var CAL_USER = 'samareh.jack/';
+    var calTarget = document.getElementById('cal-embed-target');
+    var calButtons = document.querySelectorAll('.cal-type-btn');
+    var currentEvent = null;
+
+    // Stop the frame from scrolling on its own (the "scroll in a scroll" that
+    // traps the mouse wheel). Cal sizes the frame to its content, but the content
+    // is often a few pixels taller than the size it reports, so each time Cal
+    // resizes we add a small buffer so nothing is cut off once scrolling is off.
+    var CAL_BUFFER = 24;
+    function lockCalFrame(reportedHeight) {
+      var f = calTarget.querySelector('iframe');
+      if (!f) return;
+      f.setAttribute('scrolling', 'no');
+      if (reportedHeight) f.style.height = (reportedHeight + CAL_BUFFER) + 'px';
+    }
+    new MutationObserver(function () { lockCalFrame(); })
+      .observe(calTarget, { childList: true, subtree: true });
+    Cal("on", {
+      action: "__dimensionChanged",
+      callback: function (e) {
+        var h = e && e.detail && e.detail.data && e.detail.data.iframeHeight;
+        // Run after Cal has applied its own height.
+        setTimeout(function () { lockCalFrame(h); }, 0);
+      }
+    });
+
+    function showEvent(slug) {
+      if (slug === currentEvent) return;
+      currentEvent = slug;
+      calButtons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.event === slug ? 'true' : 'false');
+      });
+      calTarget.innerHTML = '';
+      Cal("inline", { elementOrSelector: "#cal-embed-target", calLink: CAL_USER + slug, layout: "month_view" });
+      Cal("ui", { layout: "month_view", hideEventTypeDetails: false });
+    }
+
+    showEvent('fit-check');
+
+    calButtons.forEach(function (b) {
+      b.addEventListener('click', function () { showEvent(b.dataset.event); });
+    });
+
+    // Service cards preselect their event (href="#booking" handles the scroll)
+    document.querySelectorAll('.service-card-link').forEach(function (card) {
+      card.addEventListener('click', function () { showEvent(card.dataset.event); });
+    });
+  </script>
   
 </body>
 </html>
