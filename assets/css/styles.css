@@ -502,11 +502,15 @@ a.service-card-link:hover .service-card-cta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-md); /* Minimum breathing room between brand and links */
 }
 
 .nav-brand {
+  white-space: nowrap;
   font-family: var(--font-heading);
-  font-size: var(--font-size-h4);
+  /* Crimson Text has a small x-height, so it needs to be larger than the
+     Inter links to feel balanced. Shrinks fluidly as the screen narrows. */
+  font-size: clamp(22px, 2.7vw, 28px);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
 }
@@ -546,10 +550,12 @@ a.service-card-link:hover .service-card-cta {
 
 .nav-links {
   display: flex;
-  gap: var(--space-md);
+  gap: clamp(16px, 2.4vw, 28px);
 }
 
 .nav-links a {
+  white-space: nowrap;
+  font-size: clamp(15px, 1.75vw, 18px);
   color: var(--color-text);
   font-weight: var(--font-weight-medium);
   position: relative;
@@ -1231,43 +1237,40 @@ a.service-card-link:hover .service-card-cta {
   
 }
 
-/* ===== MOBILE (below 768px) ===== */
+/* ===== STACKED NAV (tablets) =====
+   When brand + links no longer fit on one line, stack them: brand on top,
+   links below, both centered with the links evenly spaced. */
+
+@media (min-width: 768px) and (max-width: 839px) {
+  .site-nav {
+    padding: var(--space-sm) 0;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .nav-links {
+    width: 100%;
+    max-width: 560px;
+    justify-content: space-evenly;
+    gap: 0;
+  }
+}
+
+/* ===== COLLAPSED NAV (phones, below 768px) ===== */
 
 @media (max-width: 767px) {
-  
-  /* Smaller typography on mobile */
-  :root {
-    --font-size-h1: 36px;
-    --font-size-h2: 28px;
-    --font-size-h3: 22px;
-    --font-size-h4: 20px;
-    --font-size-base: 16px;
-  }
-  
-  /* Reduced section padding on mobile */
-  section {
-    padding: var(--space-lg) 0;
-  }
-  
-  /* Show mobile sticky CTA */
-  .mobile-cta {
-    display: flex;
-  }
-  
-  /* Reduce states visualization size */
-  .states-labels {
-    font-size: 13px;
-  }
-  
   /* Show hamburger on mobile */
   .nav-toggle {
     display: flex;
   }
-  
-  /* Mobile menu styles */
+
+/* Mobile menu styles */
   .nav-links {
-    position: fixed;
-    top: 73px; /* Height of nav bar */
+    position: absolute;
+    top: 100%; /* Sits directly under the nav bar, whatever its height */
     left: 0;
     right: 0;
     flex-direction: column;
@@ -1305,6 +1308,39 @@ a.service-card-link:hover .service-card-cta {
   /* Active state for mobile links */
   .nav-links a:active {
     background-color: rgba(177, 90, 66, 0.05);
+  }
+}
+
+/* ===== MOBILE (below 768px) ===== */
+
+@media (max-width: 767px) {
+  
+  /* Smaller typography on mobile */
+  :root {
+    --font-size-h1: 36px;
+    --font-size-h2: 28px;
+    --font-size-h3: 22px;
+    --font-size-h4: 20px;
+    --font-size-base: 16px;
+  }
+  
+  /* Reduced section padding on mobile */
+  section {
+    padding: var(--space-lg) 0;
+  }
+  
+  /* Show mobile sticky CTA */
+  .mobile-cta {
+    display: flex;
+  }
+  
+  /* Reduce states visualization size */
+  .states-labels {
+    font-size: 13px;
+  }
+  
+  .nav-brand {
+    font-size: 22px;
   }
   
   .cal-embed {
